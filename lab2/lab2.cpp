@@ -8,30 +8,19 @@ Purpose: to practice using random number generation and inquiries*/
 using namespace std;
 
 int main () {
-    int secretNum; 
-    int guessNum; 
-    int gamePoints; //not sure but seems to be necessary to intilize these placeholders in order to assigne values to them
-    int srand (time(NULL)); //generates random number based on time
-    secretNum = srand % 20 + 1; //should create a random number between 20 and 1
-    gamePoints = 0;
-    cout << secretNum <<endl; //using to test program by having it give me the number so I can test different responses
-    cout << "Guess a number between 1 and 20"<<endl<<"you will be recieve 10 points for each correct guess";
-    cout <<"you will lose one point for every bad guess"<<endl; //Instructions for game
-    cout <<"you have "<<gamePoints<<" points"<<endl<<"What number is your guess?"<<endl;
-    cin  >> guessNum; //made it to here and I'm able to get the game to inqure a number
-    
-    if (guessNum = secretNum) {
-        cout <<"Yes!!"<<endl<<"You now have"<<gamePoints<<" points!!"<<endl;
-    } return 21
-    else if (guessNum > secretNum) {
-        cout <<"I'm sorry but the number you're looking for is lower than that"<<endl;
-        cout<<"You now have"<<gamePoints<<" points."<<endl<<"Guess again?"<<endl;
-    } return 21
-    else if (guessNum < secretNum) {
-        cout<<"I'm sorry but the number you're looking for is lower than that"<<endl;
-        cout<<"You now have"<<gamePoints<<" points."<<endl<<"Guess again?"<<endl;
-        
-    } return 21
-}
-
-/*if I remove everything after line 25 I can get it to run, but it will only spit out the condition for if even when terms aren't met. */
+    int random number = ;//my random number, will use a code to generate
+    int guessN = 0; //the user's guess
+    int points = 0; //points the user has
+    cout <<"guess a number between 1 and 20."<<endl<< "You will be given 10 points for correct answers and lose 1 point for incorrect."<<endl;
+    cout <<"If at anytime you would like to quite type 'quite' to exit.";
+    cin >> guessN; //user guesses the number
+    /*from here the there will be code stating that if the guess is less than the number is higher than their guess
+    if their guess is more then the number is lower than their guess.
+    */
+    cout<<"Congratulations! You are correct and get 10 points!" <<endl<<"play again? Type 'y' or 'n'"; //if the user is correct
+    cout<<"I'm sorry but the number is more than your guess"<<endl<<"You lose a point and your new score is "<<points<<endl;
+    //for when they guess lower
+    cout<<"I'm sorry but the number is less than your guess"<<endl<<"You lose a point and your new score is "<<points<<endl;
+    //for when they guess higher
+    cout <<"Guess again? "; //this is for afterwards the guess is made
+    cin << guessN; // where they type in the guess.
