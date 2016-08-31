@@ -11,7 +11,8 @@ using namespace std;
 
 int main () {
     
-   
+    float number1 = 0;
+    int number2   = 0;
     string noun1;                                                               //Lines 15-22 are for the limerick
     string noun2;
     string noun3;
@@ -55,7 +56,7 @@ int main () {
         
         cout    <<endl<<"First noun: "<<noun1<<endl<<"Second noun: "<<noun2<<endl<<"Third noun: "<<noun3<<endl;
         cout    <<"Pronoun: "<<pro_noun<<endl<<"Adjective: "<<adj1<<endl<<"First verb: "<<verb1<<endl<<endl;
-        cout    <<"please type in a second verb. ";
+        cout    <<"please type in a present tense verb. ";
         cin     >>verb2;
         
         cout    <<endl<<"First noun: "<<noun1<<endl<<"Second noun: "<<noun2<<endl<<"Third noun: "<<noun3<<endl;
@@ -66,15 +67,27 @@ int main () {
         
         cout    <<endl<<"First noun: "<<noun1<<endl<<"Second noun: "<<noun2<<endl<<"Third noun: "<<noun3<<endl;
         cout    <<"Pronoun: "<<pro_noun<<endl<<"Adjective: "<<adj1<<endl<<"First verb: "<<verb1<<endl;
-        cout    <<"Second verb: "<<verb2<<endl<<"Place: "<<place<<endl;
+        cout    <<"Second verb: "<<verb2<<endl<<"place: "<<place<<endl<<endl;
+        cout    <<"please type in a number (not the word for number). ";
+        cin     >>number1;
+        
+        cout    <<endl<<"First noun: "<<noun1<<endl<<"Second noun: "<<noun2<<endl<<"Third noun: "<<noun3<<endl;
+        cout    <<"Pronoun: "<<pro_noun<<endl<<"Adjective: "<<adj1<<endl<<"First verb: "<<verb1<<endl;
+        cout    <<"Second verb: "<<verb2<<endl<<"place: "<<place<<endl<<"first number: "<<number1<<endl<<endl;
+        cout    <<"please type a second number. ";
+        cin     >>number2;
+        
+        cout    <<endl<<"First noun: "<<noun1<<endl<<"Second noun: "<<noun2<<endl<<"Third noun: "<<noun3<<endl;
+        cout    <<"Pronoun: "<<pro_noun<<endl<<"Adjective: "<<adj1<<endl<<"First verb: "<<verb1<<endl;
+        cout    <<"Second verb: "<<verb2<<endl<<"Place: "<<place<<endl<<"First number: "<<number1<<endl<<"Second number: "<<number2<<endl<<endl;
         cout    <<"Press any key and then Enter to continue."<<endl;            //from here the rest of the code will be the story
         cin     >>pause;
         
         cout    <<endl<<"Here is a story for you based on your answers."<<endl<<endl;
         cout    <<"There was a "<<adj1<<" Man of "<<place<<"."<<endl;
-        cout    <<"Who watched his "<<noun1<<" "<<verb1<<" a "<<noun2<<"."<<endl;
+        cout    <<"Who watched his "<<number1<<" "<<noun1<<"s' "<<verb1<<" a "<<noun2<<"."<<endl;
         cout    <<"But once, by mistake,"<<endl;
-        cout    <<"In a "<<noun3<<" "<<pro_noun<<" did "<<verb2<<"."<<endl;
+        cout    <<"In a "<<number2<<" "<<noun3<<" "<<pro_noun<<" did "<<verb2<<"."<<endl;
         cout    <<"That unfortunate Man of "<<place<<"."<<endl;
         return 0;                                                               //ends the program
 }
