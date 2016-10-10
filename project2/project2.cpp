@@ -13,12 +13,14 @@ class account {
     void withdraw (double amount_W);    //for withdrawing money
     void deposit (double amount_D);     //for depositing
     double get_bal () const;     //for calling the balance up
-    
+    account();
     private:
-    double balance = 0;        //where the balance is stored
+    double balance;        //where the balance is stored
     
 };
-
+    account::account (){
+        balance = 0;
+    }
 void account::withdraw (double amount_W){
     balance = balance - amount_W;
     if (balance < 0){
