@@ -19,13 +19,13 @@ int main(){
     //that last seection is used for shring the menue options
     cout << "what would you like to order today? you may choose up to ten items" <<endl<< "when you are done type quit" <<endl; //inquiry for order selection
     
-     while ((item[i-1] != "quit") && (item[i-1] != "Quit") && i<99) {
+     while ((item[i-1] != "quit") && (item[i-1] != "Quit") && i<99) { //starts loop that can be exited on typing in command
         cout << "enter choice #" <<i<<endl;
         getline(cin, item[i]);
         i++;
      }
      cout<<endl<<"Your order is:"<<endl;
-     while ((item[j] != "quit") && (item[j] != "Quit") && i<99) {
+     while ((item[j] != "quit") && (item[j] != "Quit") && i<99) {  //creates print loop till exit command from previous look is reached
          cout <<item[j]<<endl;
          j++;
      }
