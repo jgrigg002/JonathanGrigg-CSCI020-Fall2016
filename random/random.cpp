@@ -3,7 +3,8 @@
 using namespace std;
 
 int main () {
-    double ran = 4;
-    ran= ran % 4;
-    cout<<ran;
+char myString[20] = "my test string";
+myString[14] = '!';
+cout<<myString<<"Y"<<endl;
+return 0;
 }

@@ -14,8 +14,8 @@ int main(){
     int j= 1;                   //count for print
     cout <<"Welcome to 'ouR Burgers R Us'" << endl;
     cout <<"the menu avilable today is" <<endl<< "Item #1: yesterdays mystery meat" <<endl<< "Item #2: todays mystery meat" <<endl<< "Item #3: meat of the month" <<endl;
-    cout <<"Item #4: " <<endl<<"Item #5: " <<endl<< "Item #6: " <<endl;
-    cout <<"Item #7: " <<endl<< "Item #8: " <<endl<< "Item #9: " <<endl<< "Item #10: "<<endl;
+    cout <<"Item #4: pork" <<endl<<"Item #5: blood sauce" <<endl<< "Item #6: nuts and bolts" <<endl;
+    cout <<"Item #7: wet noodles" <<endl<< "Item #8: fried french" <<endl<< "Item #9: french fries" <<endl<< "Item #10: random item"<<endl;
     //that last seection is used for shring the menue options
     cout << "what would you like to order today? you may choose up to ten items" <<endl<< "when you are done type quit" <<endl; //inquiry for order selection
     
@@ -24,7 +24,7 @@ int main(){
         getline(cin, item[i]);
         i++;
      }
-     cout<<"Order is "<<endl;
+     cout<<endl<<"Your order is:"<<endl;
      while ((item[j] != "quit") && (item[j] != "Quit") && i<99) {
          cout <<item[j]<<endl;
          j++;
