@@ -1,3 +1,7 @@
+//Jonathan Grigg
+//csci 20
+//11.07.16
+
 #include <iostream>
 #include <fstream>
 
@@ -66,7 +70,7 @@ int main(){
    cout << endl;
    }
   
-   for (int i = 0; i < row+1; i++) {
+   for (int i = 0; i < row+1; i++) { //saves to output.txt
    if (i<row){
    for (int j = 0; j < col+1; j++) {
    fout << num[i][j]<<" ";
@@ -77,7 +81,7 @@ int main(){
    }}
    fout << endl;
    }
-   fin.close();
+   fin.close();//closes files being accessed
    fout.close();
    
    
