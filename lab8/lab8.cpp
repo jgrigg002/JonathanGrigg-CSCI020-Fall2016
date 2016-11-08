@@ -22,10 +22,9 @@ int main(){
     double kg; //user entered kilograms
     double lb; //user entered pounds
     char choice = 'r';
-    while ((choice != 'Q')||(choice != 'q')){ //while loop allowing user to choose
+    while ((choice == 'R')||(choice == 'r')){ //while loop allowing user to choose
     cout<<"Type 'K' to convert kilograms to pounds"<<endl;
     cout<<"Type 'P' to convert pounds to kilograms"<<endl;
-    cout<<"Type 'R' to repeat"<<endl;
     cout<<"Type 'Q' to quit"<<endl;
     cout<<"What is your selection? ";
     cin>>choice;
