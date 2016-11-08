@@ -10,11 +10,13 @@
 using namespace std;
 
 double kg_lb(double kg_in){//converts kg_in to lb_out
-        double lb_out = kg_in * 2.2046226218; // pounds to kilogram conversion formula
+        const double c_conversion = 2.2046226218;
+        double lb_out = kg_in * c_conversion; // pounds to kilogram conversion formula
         return lb_out;
     }
-    double lb_kg(double lb_in){//converts lb_in to kg_out
-        double kg_out = lb_in / 2.2046226218; // kilogram to pounds conversion formula
+double lb_kg(double lb_in){//converts lb_in to kg_out
+        const double c_conversion = 2.2046226218;
+        double kg_out = lb_in / c_conversion; // kilogram to pounds conversion formula
         return kg_out;
     }
     
