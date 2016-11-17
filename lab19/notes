@@ -1,0 +1,7 @@
+input into getline string array
+count iterations
+use iteration count for colunm and row settings for sums
+
+or
+int num [51][51]
+have sums saved to num[i][plus one on row count] and num[plus one on column count][j]
