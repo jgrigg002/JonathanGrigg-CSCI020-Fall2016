@@ -71,7 +71,6 @@ doc.open("little_miss_muffet.txt");
            
        //}
        
-       i++;
    for (int k=0; k<word_talley; k++){
    cout<< words[k];
    }

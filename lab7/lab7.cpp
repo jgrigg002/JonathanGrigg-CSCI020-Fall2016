@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
+int main(){
 //chorus1
 cout<<"Summer has come and passed"<<endl;
 cout<<"The innocent can never last"<<endl;
@@ -49,3 +51,6 @@ cout<<"Like my father's come to pass"<<endl;
 cout<<"Seven years has gone so fast"<<endl;
 cout<<"Wake me up when September ends"<<endl;
 cout<<"Wake me up when September ends"<<endl;
+
+return 0;
+}
