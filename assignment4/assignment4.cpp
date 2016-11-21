@@ -68,18 +68,29 @@ class conc{ //short for concordance creator
 }
         
     void conc::in(string data){
-        doc(data);
+        doc.open(data);
     if (!doc.is_open()) { //used if file fails to initilize, taken from zybooks
         cout << "Could not open word doc for analyzing." << endl;}
-        conc_word[0] = " ";
-        for(int word = 0; conc_word[word] != "" ;word++){       //adds words from in_data to conc_word string array
+        int i=0;
+        while(!doc.eof()){       //adds words from in_data to conc_word string array
             conc_word_tally++;      //increase the word count everytime a word is input
-            data>> conc_word[word]; //inputs word
-         }
-         for(int i = 0; i < conc_word_tally; i++){
-             cout<<conc_word[i]<<" ";
-         }
-         doc.close();
+            doc >> conc_word[i]; //inputs word
+       
+        for (int j=0; j<conc_word[i].length(); j++){//loop removes punctiation
+            if(ispunct(conc_word[i][j])){
+                conc_word[i].pop_back();
+        }
+        }
+        for (int j=0; j<conc_word[i].length(); j++){//loop converts upper case to lowercase
+           conc_word[i][j] = tolower(conc_word[i][j]);
+        }//needed filter for stop words
+        }
+        i++;
+        }
+        for (int j = 0; j < conc_word_tally; j++){
+            cout<<conc_word[j]<<" ";
+        }
+        doc.close();
 }
      
     // string conc::word_out() const{
@@ -91,7 +102,6 @@ int main(){
     
     conc file1;//loads class and constructor
     
-    //open file
     cout<<"please type in the name of the document you wish to use: ";
     string text;
     cin>>text;
