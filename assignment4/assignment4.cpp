@@ -22,9 +22,10 @@ class conc{ //short for concordance creator
         ifstream doc;
         ofstream out;
      //string arrays
-        string stop_list[571]; //stop words stored here
-        string conc_word[9999]; //words from doc stored here
-        string conc_line[9999]; //each word with it's count and when it occures is stored here as a string
+        string stop_list[571] = {}; //stop words stored here
+        string conc_word[9999] = {}; //words from doc stored here
+        string conc_mid[9999] = {}; //for creating a test list if a word has been compiled already
+        string conc_line[9999] = {}; //each word with it's count and when it occures is stored here as a string
      
      //word counters
         int stop_word_count;   //word count stored here if I allow choice for multiple stop files
@@ -36,22 +37,11 @@ class conc{ //short for concordance creator
          
          //initilize integers
          stop_word_count = 0;//not being used at moment, for if user is allowed choice of stop words
-         conc_word_tally = 0;
+         
          for (int i=0; i<9999; i++){
          for (int j=0; j<2; j++){
          conc_word_place_count[i][j] = 0;
          }
-         }
-         
-         //initilize strings
-         for(int i=0; i<9999; i++){
-         conc_word[i] = "";
-         }
-         for(int i=0; i<9999; i++){
-         conc_line[i] ="";
-         }
-         for(int i=0; i<571; i++){
-         stop_list[i] ="";
          }
          
          //stop word list
@@ -71,32 +61,54 @@ class conc{ //short for concordance creator
         doc.open(data);
     if (!doc.is_open()) { //used if file fails to initilize, taken from zybooks
         cout << "Could not open word doc for analyzing." << endl;}
+        conc_word_tally = 0;
         int i=0;
+        
         while(!doc.eof()){       //adds words from in_data to conc_word string array
             conc_word_tally++;      //increase the word count everytime a word is input
             doc >> conc_word[i]; //inputs word
        
-        for (int j=0; j<conc_word[i].length(); j++){//loop removes punctiation
-            if(ispunct(conc_word[i][j])){
-                conc_word[i].pop_back();
+            for (int j=0; j<conc_word[i].length(); j++){//loop removes punctiation
+                if(ispunct(conc_word[i][j])){
+                    conc_word[i].pop_back();
+            }
+            }
+            for (int j=0; j<conc_word[i].length(); j++){//loop converts upper case to lowercase
+                conc_word[i][j] = tolower(conc_word[i][j]);
+            }//needed filter for stop words
+            
+            i++;
+        }
+        for(int j=0; j< conc_word_tally; j++){
+        for(int k=0; k< 571; k++){
+            if (conc_word[j] == stop_list[k]){
+                conc_word[j] = "";
+            }
+            
         }
         }
-        for (int j=0; j<conc_word[i].length(); j++){//loop converts upper case to lowercase
-           conc_word[i][j] = tolower(conc_word[i][j]);
-        }//needed filter for stop words
-        }
-        i++;
-        }
+        
+        
+        
         for (int j = 0; j < conc_word_tally; j++){
             cout<<conc_word[j]<<" ";
-        }
+        } //used for testing words out.
         doc.close();
-}
-     
-    // string conc::word_out() const{
-    //     return conc_line;
-//}
-     
+    }
+    
+    string word_out(){
+        for (int k=0; k < conc_word_tally; k++){
+            if(conc_word[k] != conc_mid[k]){
+                    conc_mid[k]= conc_word[k];
+                    conc_word_place_count[k][0]++;
+                    conc_word_place_count[k][1]=k;
+            }
+        }
+        
+        for (int j=0; j <conc_word_tally;j++){
+            
+        }
+    }    
 
 int main(){
     
@@ -106,17 +118,6 @@ int main(){
     string text;
     cin>>text;
     file1.in(text);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //closes out doc being accessed
     
     
     
