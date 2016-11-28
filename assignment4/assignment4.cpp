@@ -14,7 +14,7 @@ class conc{ //short for concordance creator
     public:  //input output
         conc(); //constructor
         void in(string text); //mutator //data input
-        string word_out() const;//accessor    //data output, string contains each line as an array. chosen because user can always modify output string into any format wanted.
+        string word_out();//accessor    //data output, string contains each line as an array. chosen because user can always modify output string into any format wanted.
    
     private:
      //stop word in file
@@ -37,7 +37,8 @@ class conc{ //short for concordance creator
          
          //initilize integers
          stop_word_count = 0;//not being used at moment, for if user is allowed choice of stop words
-         
+         conc_word_tally = 0;
+                 
          for (int i=0; i<9999; i++){
          for (int j=0; j<2; j++){
          conc_word_place_count[i][j] = 0;
@@ -61,7 +62,7 @@ class conc{ //short for concordance creator
         doc.open(data);
     if (!doc.is_open()) { //used if file fails to initilize, taken from zybooks
         cout << "Could not open word doc for analyzing." << endl;}
-        conc_word_tally = 0;
+
         int i=0;
         
         while(!doc.eof()){       //adds words from in_data to conc_word string array
@@ -96,10 +97,10 @@ class conc{ //short for concordance creator
         doc.close();
     }
     
-    string word_out(){
+    string conc::word_out(){
         for (int k=0; k < conc_word_tally; k++){
             if(conc_word[k] != conc_mid[k]){
-                    conc_mid[k]= conc_word[k];
+                    conc_mid[k] = conc_word[k];
                     conc_word_place_count[k][0]++;
                     conc_word_place_count[k][1]=k;
             }
@@ -108,6 +109,7 @@ class conc{ //short for concordance creator
         for (int j=0; j <conc_word_tally;j++){
             
         }
+    return conc_line;
     }    
 
 int main(){
