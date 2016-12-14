@@ -1,8 +1,4 @@
 c Chico
-p 90316
-a b 6.2 c 22.9 a 56 o 14.9
-s f 50.4 m 49.6
+p 90316 b 6.2 c 22.9 a 56 o 14.9 f 50.4 m 49.6
 e 7 white 73.7 black 2.1 native 1.4 asian 4.2 hispanic 15.4 pacific .2 mixed_race .5
-i m 24462 f 18516
-l 24.9
-h 13.8
+i m 24462 f 18516 l 24.9 h 13.8

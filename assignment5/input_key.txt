@@ -3,24 +3,20 @@ Key for input data text
 c: city
 2nd 
 p: population (currently not used but is processed with city data for future comparisons between cities.)
-3rd
 a: age
 b: % under 5 years
 c: % under 18 years
 a: % adults
 o: % over 65 years
-4th 
 s: sex
 f: % female
 m: % male
-5th
+3rd
 e: ethnicity
 Form is name of ethnicity followed by the percentage of the population
-6th
+4th
 i: income
 m: average male income
 f: average female income
-7th
 l(L): % people below the poverty line
-9th
 h: % people without health insurance
