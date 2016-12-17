@@ -65,118 +65,134 @@ class city{
 
 int main(){
     
-    city city1;
+    city city1; //class generation
     
     ifstream in_key;  //for input file code key
     ifstream in_file; //input file
     ofstream out_data; //output option
     
-    char choice;
-    string file_name_in; //name for file to open
-    string file_name_out; //name for file to output to
+    char choice; //needed for inputing into the struct
+    
+    
     string data; //used for transfering to stringstream and from
     string c_name; //city name for input function
     string buffer; //need for transfering data into a struct array
     int popu = 0; //for population # input
     int eth;
     // these structs are for transfer to class
-    pop p_in;
-    pop p_out;
-    income i_in;
-    income i_out;
-    ethn e_in[99];
-    ethn e_out[99];
     
-    float ran_gen = 0;
+    
+    
+    //variables for input into class
+    string file_name_in; //name for file to open
+    pop p_in;       //population struct into class
+    income i_in;    //income struct for into class
+    ethn e_in[99];  //ethnicity income for into class
+    
+    
+    //variables for output of class
+    string file_name_out; //name for file to output to
+    pop p_out;          //population struct for output from class
+    income i_out;       //income struct for output from class
+    ethn e_out[99];     //ethnicity struct for output from class
+    
+    //Probability generator variables
+    float ran_gen = 0;      //variables are stored here after generation
+    
+    
     
     in_key.open("input_key.txt"); //input is opened
-    
-    if ( !in_key.is_open() ){ //test for open if fail terminates program
+    if ( !in_key.is_open() ){ //test for open, if fail, terminates program
         cout<<"error loading in file input key"<<endl;
         return -1;
     }
     
     //offers choice of reading file input key or just opening file
-    cout<<"Welcome to Jonathan Grigg's capstone project.\nPlease type in the name of the file you would like to input or type \"key\" to view the input key"<<endl;
-    cin>>file_name_in; //file is input
-    if (file_name_in == "key"){ //if key is typed it opens and reads input key and then asks for file name to input
-        cout<<endl;
-        
-        //prints off input key for file input to user
+    cout<<"Welcome to Jonathan Grigg's capstone project."<<endl;
+    cout<<"Please type in the name of the file you would like to input or type \"key\" to view the input key"<<endl;
+    cin>>file_name_in;          //used for accessing the file.
+    //if "key" is typed it opens and reads input_key.txt. After the file is read in it asks for the file name you would like to input.
+    
+    if (file_name_in == ""){ //exit it nothing is typed
+            return 0;
+        }
+    
+    else if (file_name_in == "key"){ //prints input_key.txt
         while (!in_key.eof()){
             getline(in_key, data); 
             cout<<data<<endl;
         }
         cout<<"please type in the name of the file you would like to input. just press enter to close program"<<endl;
         cin>>file_name_in;
-        //allows exit
-        if (file_name_in == ""){
+        
+        if (file_name_in == ""){ //exit it nothing is typed
             return 0;
         }
-        //opens file
-        else{
-        in_file.open(file_name_in);
-        //if (in_file.is_open()){ //for testing
-        //    cout<<"file is open"<<endl;
-        //}
+        
+        else{        //opens file
+            in_file.open(file_name_in);
+        //  if (in_file.is_open()){ //for testing
+        //      cout<<"file is open"<<endl;
+        //  }
         }
     }
+    
     //opens file if user doesn't want to read the key
     else{
         in_file.open(file_name_in);
-       // if (in_file.is_open()){
-    //        cout<<"file is open"<<endl;
-      //  }
+    /*      if (in_file.is_open()){
+                cout<<"file is open"<<endl;
+            }*/
     }
-    //I close out the inout key file here so I can close the program if things go wrong
-    in_key.close();
-    //closes if file open failes
+    
+    in_key.close(); //since input_key.txt is not needed I close it here
+    
+    //closes program if file fails to open
     if (!in_file.is_open()){
         cout<<"could not open";
         return -1;
     }
-    //string stream for reading in each line. switch because the first letter of each line in input file triggers the switch
-    while (!in_file.eof()){
-        getline(in_file,data);
-        istringstream iss(data);
-        iss>>choice;
-        switch (choice){
-            //for the city name line that then sends data to the class
-            case 'c': 
-                iss>>c_name;
-                city1.set_name(c_name);//sets city name in the class
+    
+    while (!in_file.eof()){ //loop continues till end of file is read by in_file
+        getline(in_file,data); //reads infile into "data"
+        istringstream iss(data); //whole line is transfered into the string stream for parsing out piece by piece
+        iss>>choice;            //because first piece of each line is a letter it's read into 'char choice' for use in switch
+        
+        switch (choice){ //first letter read in sets which path is taken
+            
+            case 'c':      //for the city name line that then sends data to the class
+                iss>>c_name; //if 'c' was the char then it pulls the next word into c_name.
+                city1.set_name(c_name);//sets city name in the class using c_name.
             break;
             
-            //inputs the population struct
-            case 'p': 
-                iss>> p_in.pop;
-                for (int j =0 ; j<6; j++){   
+            case 'p': //inputs the population struct
+                iss>> p_in.pop; //if 'p' was the charecter than it starts this loop.
+                
+                //because the data on each line follows the moddle 'char'(for determining type) and then a proportion that the data represents
+                //I use this loop with max size set to the number of data types
+                
+                for (int j =0 ; j<6; j++){
+                    
                     iss>>choice;
                     switch (choice){
                         case 'b':
                         iss>> p_in.baby;
                         break;
-                        
                         case 'c':
                         iss>> p_in.child;
                         break;
-                        
                         case 'a':
                         iss>> p_in.adult;
                         break;
-                        
                         case 'o':
                         iss>> p_in.senior;
                         break;
-                        
                         case 'f':
                         iss>> p_in.female;
                         break;
-                        
                         case 'm':
                         iss>> p_in.male;
                         break;
-                        
                         default:
                         cout<<"error";
                     }
@@ -281,13 +297,33 @@ int main(){
     else {
         cout <<"is a senior, ";
     }
-    /*
-    srand(time(0));
-    ran_gen = (rand()%eth);
-    int a = ran_gen;
-    switch (a)
-    */
     
+    srand(time(0));
+    ran_gen = (rand()%1000);
+    float upper = 0;
+    float lower = 0;
+    int counte =0;
+    // FIX ME!!! up till this point program properly outputs. loop causes 
+    
+    lower -= (e_out[0].percent * 10);
+    for (int i =0 ; i<eth; i++){
+        
+        switch(counte){
+            case 0:
+                upper += (e_out[i].percent * 10);
+                counte++; 
+                cout<< "case 0 ";
+            break;
+
+            case 1:
+                lower += (e_out[(i-1)].percent * 10);
+                upper += (e_out[i].percent * 10);
+        }
+            if ((ran_gen<upper) && (ran_gen>lower)){
+                cout<<"is "<<e_out[i].name<<" ";
+            }
+        }
+            
     
     
     return 0;
