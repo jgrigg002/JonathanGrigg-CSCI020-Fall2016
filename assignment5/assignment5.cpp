@@ -65,6 +65,8 @@ class city{
 
 int main(){
     
+    srand(time(0));
+    
     city city1; //class generation
     
     ifstream in_key;  //for input file code key
@@ -244,35 +246,36 @@ int main(){
     in_file.close();
 
  //for testing output from class
-    cout<<city1.get_name()<<endl;
+    //cout<<city1.get_name()<<endl;
     p_out = city1.get_pop();
-    cout<<p_out.pop<<endl;
+    /*cout<<p_out.pop<<endl;
     cout<<p_out.male<<endl;
     cout<<p_out.female<<endl;
     cout<<p_out.baby<<endl;
     cout<<p_out.child<<endl;
     cout<<p_out.adult<<endl;
     cout<<p_out.senior<<endl;
-
+*/
     i_out = city1.get_in();
-    //output test
+    /*//output test
     cout<<i_out.male<<endl;
     cout<<i_out.female<<endl;
     cout<<i_out.poverty<<endl;
     cout<<i_out.no_insurance<<endl;
-    
+    */
     //for testing output of ethnicity
     
     for (int m =0; m < eth; m++){
     e_out[m] = city1.get_eth(m);
     }
-    
+    /*
     for (int r =0; r< eth; r++){
         cout<<e_out[r].name<<endl;
         cout<<e_out[r].percent<<endl;
-    }
+    }*/
     
-    srand(time(0));
+    cout<<endl;
+    
     ran_gen = (rand()%1000);
     if(ran_gen<(p_out.female * 10)){
         cout<<"person is female, ";
@@ -283,7 +286,6 @@ int main(){
 
     }
     
-    srand(time(0));
     ran_gen = (rand()%1000);
     if (ran_gen < (p_out.baby * 10)){
         cout<<"is a baby, ";
@@ -298,31 +300,30 @@ int main(){
         cout <<"is a senior, ";
     }
     
-    srand(time(0));
     ran_gen = (rand()%1000);
     float upper = 0;
     float lower = 0;
-    int counte =0;
-    // FIX ME!!! up till this point program properly outputs. loop causes 
     
-    lower -= (e_out[0].percent * 10);
+    
+    //cout<<" "<<lower<<" ";
     for (int i =0 ; i<eth; i++){
         
-        switch(counte){
+        switch(i){
             case 0:
+            //cout<<ran_gen<<" case 0 ";
                 upper += (e_out[i].percent * 10);
-                counte++; 
-                cout<< "case 0 ";
+                //cout<<" "<<upper<<" ";
             break;
 
-            case 1:
+            default:
                 lower += (e_out[(i-1)].percent * 10);
                 upper += (e_out[i].percent * 10);
+                //cout<<lower<<" "<<upper<<" ";
         }
-            if ((ran_gen<upper) && (ran_gen>lower)){
+        if ((ran_gen<upper) && (ran_gen>lower)){
                 cout<<"is "<<e_out[i].name<<" ";
-            }
         }
+    }
             
     
     
